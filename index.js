@@ -12,6 +12,7 @@ var port = process.env.PORT || 8080;
 const server = express();
 server.use(bodyParser.json());
 server.post('/getMovies',function (request,response)  {
+    console.log('movie request');
     if(request.body.result.parameters['top-rated']) {
         var req = unirest("GET", "https://api.themoviedb.org/3/movie/top_rated");
             req.query({
@@ -110,7 +111,7 @@ server.post('/getMovies',function (request,response)  {
     }
 });
 server.get('/getName',function (req,res){
-    res.send('Bhagyashree & Deepak');
+    res.send('Bhagyashree');
 });
 server.listen(port, function () {
     console.log("Magic happens at 8080...");
